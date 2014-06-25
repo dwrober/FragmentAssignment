@@ -10,10 +10,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.os.Build;
 
 public class MainActivity extends Activity {
-
+	private ListView listView;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,6 +27,12 @@ public class MainActivity extends Activity {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		setupList();
 	}
 
 	@Override
@@ -51,6 +61,24 @@ public class MainActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private void setupList() {
+		listView = (ListView) findViewById(R.id.listview);
+		String[] values = new String[] { "Android List View", 
+			"Adapter implementation",
+			"Simple List View In Android",
+			"Create List View Android", 
+			"Android Example", 
+			"List View Source Code", 
+			"List View Array Adapter", 
+			"Android Example List View" 
+			};
+		
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+	              android.R.layout.simple_list_item_1, android.R.id.text1, values);
+	
+		listView.setAdapter(adapter); 
 	}
 
 	/**
