@@ -4,6 +4,6 @@
     <string name="app_name">Fragments</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="list_meun_item">ListView</string>
+    <string name="list_menu_item">List View</string>
 
 </resources>
