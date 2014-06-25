@@ -9,7 +9,7 @@
         android:title="@string/action_settings"/>
     
     <item
-        android:id="@+id/ListItems"
+        android:id="@+id/list_items"
         android:orderInCategory="100"
         android:showAsAction="always"
         android:title="@string/list_menu_item"/>

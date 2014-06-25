@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,7 +30,7 @@ public class MainActivity extends Activity {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
@@ -38,7 +39,15 @@ public class MainActivity extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
+		Log.i("onOptionsItemSelected", Integer.toString(id));
+		Log.i("list_items_key", Integer.toString(R.id.list_items));
+		Log.i("bool", R.id.list_items == id ? "yup" : "nope");
 		if (id == R.id.action_settings) {
+			return true;
+		}
+		if (id == R.id.list_items) {
+			// handle menu item here
+			//item.setVisible(false);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
