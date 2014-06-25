@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.os.Build;
@@ -33,6 +34,14 @@ public class MainActivity extends Activity {
 	protected void onStart() {
 		super.onStart();
 		setupList();
+		
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		      @Override
+		      public void onItemClick(AdapterView parent, final View view, int position, long id) {
+		        final String item = (String) parent.getItemAtPosition(position);
+		        Log.i("itemSelected",item);
+		      }
+    	});
 	}
 
 	@Override
@@ -49,9 +58,6 @@ public class MainActivity extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		Log.i("onOptionsItemSelected", Integer.toString(id));
-		Log.i("list_items_key", Integer.toString(R.id.list_items));
-		Log.i("bool", R.id.list_items == id ? "yup" : "nope");
 		if (id == R.id.action_settings) {
 			return true;
 		}
@@ -65,14 +71,10 @@ public class MainActivity extends Activity {
 	
 	private void setupList() {
 		listView = (ListView) findViewById(R.id.listview);
-		String[] values = new String[] { "Android List View", 
-			"Adapter implementation",
-			"Simple List View In Android",
-			"Create List View Android", 
-			"Android Example", 
-			"List View Source Code", 
-			"List View Array Adapter", 
-			"Android Example List View" 
+		String[] values = new String[] { "Even Numbers",
+				"Odd Numbers",
+				"Random numbers",
+				"Fib Numbers"
 			};
 		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
