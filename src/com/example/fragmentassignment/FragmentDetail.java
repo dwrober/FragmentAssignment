@@ -1,10 +1,16 @@
 package com.example.fragmentassignment;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class FragmentDetail extends Fragment {
@@ -24,8 +30,27 @@ public class FragmentDetail extends Fragment {
 	@Override
 	public void onStart() {
 		super.onStart();
+		setText();
+	}
+	
+	private void setText() {
+		String text = operation + " {" + getText(operation) + "}";
+		TextView tv = (TextView) getActivity().findViewById(R.id.operation);
+		tv.setText(text);
+	}
+	
+	private String getText(String operation) {
+		String even = "";
+		String odd = "";
+		for(int i = 1; i <= 100; i++) {
+			if(i%2==0) {
+				even += Integer.toString(i);
+			}
+			else {
+				odd += Integer.toString(i);
+			}
+		}
 		
-    	TextView tv = (TextView) getActivity().findViewById(R.id.operation);
-    	tv.setText(operation);
+		return operation=="Even Numbers" ? even : odd;
 	}
 }

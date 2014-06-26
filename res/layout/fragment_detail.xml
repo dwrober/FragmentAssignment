@@ -11,7 +11,12 @@
     <TextView
         android:id="@+id/operation"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+   	<ListView
+        android:id="@+id/detailList"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fragment Detail" />
+        android:layout_alignParentLeft="true" >
+    </ListView>
 
 </RelativeLayout>

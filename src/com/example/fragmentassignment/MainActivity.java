@@ -59,7 +59,7 @@ public class MainActivity extends Activity {
 	}
 	
 	private void selectList() {
-		
+		// go back to fragment main
 	}
 	
 	
@@ -92,9 +92,7 @@ public class MainActivity extends Activity {
 	private void setupList() {
 		listView = (ListView) findViewById(R.id.listview);
 		String[] values = new String[] { "Even Numbers",
-				"Odd Numbers",
-				"Random numbers",
-				"Fib Numbers"
+				"Odd Numbers"
 			};
 		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
