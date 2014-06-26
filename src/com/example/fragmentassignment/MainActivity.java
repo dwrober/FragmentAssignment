@@ -3,6 +3,8 @@ package com.example.fragmentassignment;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,9 +42,23 @@ public class MainActivity extends Activity {
 		      public void onItemClick(AdapterView parent, final View view, int position, long id) {
 		        final String item = (String) parent.getItemAtPosition(position);
 		        Log.i("itemSelected",item);
+		        selectDetail(item);
 		      }
     	});
 	}
+	
+	private void selectDetail(String item) {
+		FragmentDetail fragDetail = new FragmentDetail();
+		FragmentManager fragmentManager= getFragmentManager();
+		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+	
+		fragmentTransaction.replace(R.id.container, fragDetail);
+		
+		//fragmentTransaction.add(R.id.container, (Fragment) findViewById(R.layout.fragment_main));
+		fragmentTransaction.commit();
+	}
+	
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
