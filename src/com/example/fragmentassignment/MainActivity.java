@@ -49,13 +49,17 @@ public class MainActivity extends Activity {
 	
 	private void selectDetail(String item) {
 		FragmentDetail fragDetail = new FragmentDetail();
+		fragDetail.setOperation(item);
 		FragmentManager fragmentManager= getFragmentManager();
 		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 	
 		fragmentTransaction.replace(R.id.container, fragDetail);
-		
-		//fragmentTransaction.add(R.id.container, (Fragment) findViewById(R.layout.fragment_main));
+		fragmentTransaction.addToBackStack("asdf");
 		fragmentTransaction.commit();
+	}
+	
+	private void selectList() {
+		
 	}
 	
 	
@@ -78,8 +82,8 @@ public class MainActivity extends Activity {
 			return true;
 		}
 		if (id == R.id.list_items) {
-			// handle menu item here
-			//item.setVisible(false);
+			Log.i("list_items", "called");
+			selectList();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
