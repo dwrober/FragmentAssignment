@@ -34,23 +34,22 @@ public class FragmentDetail extends Fragment {
 	}
 	
 	private void setText() {
-		String text = operation + " {" + getText(operation) + "}";
+		ArrayList<String> values = getValues(operation);
 		TextView tv = (TextView) getActivity().findViewById(R.id.operation);
-		tv.setText(text);
+		tv.setText(operation);
 	}
 	
-	private String getText(String operation) {
-		String even = "";
-		String odd = "";
+	private ArrayList<String> getValues(String operation) {
+		ArrayList<String> even = new ArrayList<String>();
+		ArrayList<String> odd = new ArrayList<String>();
 		for(int i = 1; i <= 100; i++) {
 			if(i%2==0) {
-				even += Integer.toString(i);
+				even.add(Integer.toString(i));
 			}
 			else {
-				odd += Integer.toString(i);
+				odd.add(Integer.toString(i));
 			}
 		}
-		
 		return operation=="Even Numbers" ? even : odd;
 	}
 }
