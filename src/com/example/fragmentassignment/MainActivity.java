@@ -91,9 +91,7 @@ public class MainActivity extends Activity {
 	
 	private void setupList() {
 		listView = (ListView) findViewById(R.id.listview);
-		String[] values = new String[] { "Even Numbers",
-				"Odd Numbers"
-			};
+		String[] values = new String[] { "Even Numbers","Odd Numbers"};
 		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 	              android.R.layout.simple_list_item_1, android.R.id.text1, values);

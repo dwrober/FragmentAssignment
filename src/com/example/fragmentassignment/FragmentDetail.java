@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 public class FragmentDetail extends Fragment {
 	private String operation = "";
+	private ListView detailList;
 	
     public void setOperation(String op) {
     	operation = op;
@@ -31,12 +32,21 @@ public class FragmentDetail extends Fragment {
 	public void onStart() {
 		super.onStart();
 		setText();
+		setupList();
+	}
+	
+	private void setupList() {
+		ArrayList<String> values = getValues(operation);
+		detailList = (ListView) getActivity().findViewById(R.id.detailList);
+		
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, android.R.id.text1, values);
+		detailList.setAdapter(adapter); 
+		
 	}
 	
 	private void setText() {
-		ArrayList<String> values = getValues(operation);
 		TextView tv = (TextView) getActivity().findViewById(R.id.operation);
-		tv.setText(operation);
+		tv.setText(operation);	
 	}
 	
 	private ArrayList<String> getValues(String operation) {
