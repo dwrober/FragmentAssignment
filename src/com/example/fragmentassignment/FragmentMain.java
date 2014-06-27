@@ -52,9 +52,8 @@ public class FragmentMain extends Fragment {
 		fragDetail.setOperation(item);
 		FragmentManager fragmentManager= getFragmentManager();
 		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-	
 		fragmentTransaction.replace(R.id.container, fragDetail);
-		fragmentTransaction.addToBackStack("asdf");
+		fragmentTransaction.addToBackStack(null);
 		fragmentTransaction.commit();
 	}
 }
