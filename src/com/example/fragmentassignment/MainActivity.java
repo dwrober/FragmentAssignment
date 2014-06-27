@@ -19,6 +19,7 @@ import android.os.Build;
 
 public class MainActivity extends Activity {
 	private ListView listView;
+	private FragmentMain fm;
 	
 	
 	@Override
@@ -26,37 +27,23 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
+//		if (savedInstanceState == null) {
+//			getFragmentManager().beginTransaction()
+//					.add(R.id.container, new PlaceholderFragment()).commit();
+//		}
 	}
 	
 	@Override
 	protected void onStart() {
 		super.onStart();
-		setupList();
-		
-		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-		      @Override
-		      public void onItemClick(AdapterView parent, final View view, int position, long id) {
-		        final String item = (String) parent.getItemAtPosition(position);
-		        Log.i("itemSelected",item);
-		        selectDetail(item);
-		      }
-    	});
-	}
-	
-	private void selectDetail(String item) {
-		FragmentDetail fragDetail = new FragmentDetail();
-		fragDetail.setOperation(item);
+		fm = new FragmentMain();
 		FragmentManager fragmentManager= getFragmentManager();
 		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-	
-		fragmentTransaction.replace(R.id.container, fragDetail);
-		fragmentTransaction.addToBackStack("asdf");
+		fragmentTransaction.add(R.id.container, fm);
 		fragmentTransaction.commit();
 	}
+	
+
 	
 	private void selectList() {
 		// go back to fragment main
@@ -88,32 +75,22 @@ public class MainActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	private void setupList() {
-		listView = (ListView) findViewById(R.id.listview);
-		String[] values = new String[] { "Even Numbers","Odd Numbers"};
-		
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-	              android.R.layout.simple_list_item_1, android.R.id.text1, values);
-	
-		listView.setAdapter(adapter); 
-	}
 
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
-	public static class PlaceholderFragment extends Fragment {
-
-		public PlaceholderFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
-			return rootView;
-		}
-	}
+//	public static class PlaceholderFragment extends Fragment {
+//
+//		public PlaceholderFragment() {
+//		}
+//
+//		@Override
+//		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//				Bundle savedInstanceState) {
+//			View rootView = inflater.inflate(R.layout.fragment_main, container,
+//					false);
+//			return rootView;
+//		}
+//	}
 
 }
